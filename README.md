@@ -5,7 +5,7 @@ Content
 ============
 
 app_recipe \
-cdd_recipe
+cdd_recipe \
 (respectively to implement the application interface and the sensor device driver).
 
 Dependencies
@@ -16,7 +16,7 @@ No dependencies
 Patches
 =======
 
-Please submit any patches against the meta-ppgInteraction layer through the github issue section of this repository
+Please submit any patches against the meta-ppgInteraction layer through the github issue section of this repository.
 
 Maintainer: https://github.com/alessandrolandra
 
