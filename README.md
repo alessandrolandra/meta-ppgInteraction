@@ -30,7 +30,7 @@ you have to add this layer to the image configuration by running:
 ```
 bitbake-layers add-layer ../meta-ppgInteraction/
 ```
-(In alternative you can add a line in conf/bblayers.conf file reporting "<your_poky_folder>/meta-pphInteraction" inside the BBLAYERS string).
+(In alternative you can add a line in conf/bblayers.conf file reporting "<your_poky_folder>/meta-ppgInteraction" inside the BBLAYERS string).
 
 Finally, to add the newly create recipes to the image to be deployed you have to edit conf/local.conf file by adding the following lines: 
 ```
