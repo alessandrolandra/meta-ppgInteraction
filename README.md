@@ -4,7 +4,7 @@ yocto BSP layer developer for interacting with a ppg sensor and give the user hi
 Content
 ============
 
-app_recipe
+app_recipe \
 cdd_recipe
 (respectively to implement the application interface and the sensor device driver).
 
