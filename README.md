@@ -34,7 +34,7 @@ Finally, to add the newly create recipes to the image to be deployed you have to
 ```
 IMAGE_INSTALL_append = " hearthmonitor ppgreader"
 KERNEL_MODULE_AUTOLOAD += "ppgreader"
-`.
+```
 
 You can now build the new image by issuing the command: 
 `bitbake core-image-minimal`.
