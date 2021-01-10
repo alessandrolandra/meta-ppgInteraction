@@ -24,7 +24,8 @@ Maintainer: https://github.com/alessandrolandra
 Adding the meta-ppgInteraction layer to your build
 =================================================
 
-The following instructions are supposed to be executed in an environment equipped with Poky, as reference distribution of the Yocto Project. \\
+The following instructions are supposed to be executed in an environment equipped with Poky, as reference distribution of the Yocto Project. \
+\
 First of all you need to clone this repository (or download and copy the whole meta-ppgInteraction directory) into **your poky folder**. \
 Then, after initializing your environment with
 `source oe-init-build-env <your_build_path>`,
@@ -47,9 +48,9 @@ bitbake console-image
 ```
 `*`) This layer may probably also work on other architectures (other raspberry pi model, qemu etc), but probably some timing differencies must be taken into account in the app_recipe. \
 I succeeded in making this working with the qemuarm machine; \
-all you need to do, in order to make these recepies compatible, is to change the COMPATIBLE_MACHINE in **meta-ppgInteraction/recipes-ppg/cdd_recipe/ppgreader.bb**: \
+all you need to do, in order to make these recepies compatible, is to change the COMPATIBLE_MACHINE in **meta-ppgInteraction/recipes-ppg/cdd_recipe/ppgreader.bb**:
 ```
 #COMPATIBLE_MACHINE = "raspberrypi4"
 COMPATIBLE_MACHINE = "qemuarm"
 ```
-Finally, you probably need to change the image to build, using `bitbake core-image-minimal`, for example.
+Finally, you probably need to change the type of the image to build, using `bitbake core-image-minimal`, for example.
