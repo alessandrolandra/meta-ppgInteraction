@@ -11,7 +11,7 @@ cdd_recipe \
 Target machine
 ============
 
-raspberry pi 4
+raspberry pi 4 \
 (see compatibility note at the end (`*`))
 
 Patches
