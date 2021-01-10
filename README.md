@@ -53,4 +53,11 @@ all you need to do, in order to make these recepies compatible, is to change the
 #COMPATIBLE_MACHINE = "raspberrypi4"
 COMPATIBLE_MACHINE = "qemuarm"
 ```
-Finally, you probably need to change the type of the image to build, using `bitbake core-image-minimal`, for example.
+The timing change that I was mentioning before, for my qemuarm machine, was to change the line 69 in hearthmonitor.c file from this:
+```
+usleep(17000);
+```
+to this:
+```
+usleep(17000);
+```
