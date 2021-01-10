@@ -43,10 +43,11 @@ If you are using a console only version, like the one that I used, the needed co
 ```
 bitbake console-image
 ```
-You can also use this layer in other architectures, foer example another raspberry pi model or qemuarm etc. \
-All you need to do, in order to make these recepies compatible, is to change the COMPATIBLE_MACHINE in meta-ppgInteraction/recipes-ppg/cdd_recipe/ppgreader.bb. For example: \
+You can also use this layer on other architectures (another raspberry pi model, qemuarm etc). \
+All you need to do, in order to make these recepies compatible, is to change the COMPATIBLE_MACHINE in **meta-ppgInteraction/recipes-ppg/cdd_recipe/ppgreader.bb**. \
+For example:
 ```
 #COMPATIBLE_MACHINE = "raspberrypi4"
 COMPATIBLE_MACHINE = "qemuarm"
 ```
-Finally, you probably need to change the image to build, for example using `bitbake core-image-minimal`.
+Finally, you probably need to change the image to build, using `bitbake core-image-minimal` in the previous example.
