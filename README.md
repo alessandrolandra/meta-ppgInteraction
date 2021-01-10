@@ -53,9 +53,9 @@ all you need to do, in order to make these recepies compatible, is to change the
 #COMPATIBLE_MACHINE = "raspberrypi4"
 COMPATIBLE_MACHINE = "qemuarm"
 ```
-The timing change that I was mentioning before, for my qemuarm machine, was to decrease the sleep interval in line 69 of the **meta-ppgInteraction/recipes-ppg/app_recipe/files/hearthmonitor.c** file from this:
+The timing change that I was mentioning before, for my qemuarm machine, was to decrease the sleep interval in line 64 of the **meta-ppgInteraction/recipes-ppg/app_recipe/files/hearthmonitor.c** file from this:
 ```
-usleep(17000);
+usleep(20000);
 ```
 to this:
 ```
