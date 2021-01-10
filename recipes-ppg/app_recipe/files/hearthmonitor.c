@@ -2,14 +2,10 @@
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
-//#include <sys/types.h>
-//#include <sys/stat.h>
 #include <fcntl.h>
 #include <pthread.h>
-//#include <assert.h>
 #include <math.h>
 #include <stdlib.h>
-//#include <time.h>
 
 #define q	11		    /* for 2^11 points */
 #define N	(1<<q)		/* N-point FFT, iFFT */
@@ -27,7 +23,8 @@ int fd = -1;
 void fft( complex *v, int n, complex *tmp )
 {
   if(n>1) {			/* otherwise, do nothing and return */
-    int k,m;    complex z, w, *vo, *ve;
+    int k,m;
+    complex z, w, *vo, *ve;
     ve = tmp; vo = tmp+n/2;
     for(k=0; k<n/2; k++) {
       ve[k] = v[2*k];
@@ -53,20 +50,18 @@ void *computeFFT(){
   static complex v[N],scratch[N];
   static float abs[N];
   static int k,m,minIdx, maxIdx;
-
   static char msg[6];//5 digits +'\0';
 
   if ((fd = open(dev_name, O_RDWR)) < 0){
-  	  fprintf(stderr, "ppgreader: unable to open %s: %s\n", dev_name, strerror(errno));
-  	  exit(EXIT_FAILURE);
+  	fprintf(stderr, "ppgreader: unable to open %s: %s\n", dev_name, strerror(errno));
+  	exit(EXIT_FAILURE);
   }
-
 // Initialize the complex array for FFT computation
   for(k=0; k<N; k++) {
 	read(fd, msg, 1);
 	sscanf(msg,"%f",&(v[k].Re));
 	v[k].Im = 0;
-	usleep(17000);
+	usleep(20000);
   }
   close(fd);
 
@@ -84,8 +79,8 @@ void *computeFFT(){
 // Find the peak in the PSD from 30 bpm to 180 bpm
   m = minIdx;
   for(k=minIdx; k<(maxIdx); k++) {
-    if( abs[k] > abs[m] )
-	m = k;
+  	if( abs[k] > abs[m] )
+		m = k;
   }
 
 // Print the heart beat in bpm
@@ -94,10 +89,11 @@ void *computeFFT(){
 }
 
 int main(int argc, char* argv[]){
-  pthread_t pid;
-  while(1) {
-	  pthread_create(&pid, NULL, computeFFT, NULL);
-	  pthread_join(pid, NULL);
-  }
-  exit(EXIT_SUCCESS);
+	pthread_t pid;
+  	while(1) {
+		pthread_create(&pid, NULL, computeFFT, NULL);
+		pthread_join(pid, NULL);
+  	}
+	close(fd);
+	exit(EXIT_SUCCESS);
 }
