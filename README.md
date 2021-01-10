@@ -1,6 +1,12 @@
 # meta-ppgInteraction
 yocto BSP layer developed for interacting with a ppg sensor and giving the user his hearth rate (CDD + APP recipes).
 
+Target machine
+============
+
+raspberry pi 4 \
+(see compatibility note at the end (`*`))
+
 Content
 ============
 
@@ -8,11 +14,6 @@ app_recipe \
 cdd_recipe \
 (respectively to implement the application interface and the sensor device driver).
 
-Target machine
-============
-
-raspberry pi 4 \
-(see compatibility note at the end (`*`))
 
 Patches
 =======
