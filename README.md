@@ -23,7 +23,7 @@ Maintainer: https://github.com/alessandrolandra
 Adding the meta-ppgInteraction layer to your build
 =================================================
 
-First of all you need to clone this repository (or download and copy the whole meta-ppgInteraction directory) into *your poky folder*. \
+First of all you need to clone this repository (or download and copy the whole meta-ppgInteraction directory) into **your poky folder**. \
 Then, after initializing your environment with
 `source oe-init-build-env <your_build_path>`,
 you have to add this layer to the image configuration by running:
@@ -38,5 +38,7 @@ IMAGE_INSTALL_append = " hearthmonitor ppgreader"
 KERNEL_MODULE_AUTOLOAD += "ppgreader"
 ```
 
-You can now build the new image by issuing the command: 
-`bitbake core-image-minimal`.
+You can now build the new image. \
+If you are using a console only version, like the one that I used, the needed command is:
+`bitbake console-image`
+(You can do all these ... `bitbake core-image-minimal`).
