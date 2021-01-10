@@ -32,7 +32,7 @@ bitbake-layers add-layer <your_poky_folder>/meta-ppgInteraction/
 ```
 (In alternative you can add a line in <your_build_path>/conf/bblayers.conf file, reporting "<your_poky_folder>/meta-ppgInteraction" inside the BBLAYERS string).
 
-Finally, to add the newly create recipes to the image to be deployed, you have to edit conf/local.conf file by adding the following lines: 
+Finally, to add the newly create recipes to the image to be deployed, you have to edit <your_build_path>/conf/local.conf file by adding the following lines: 
 ```
 IMAGE_INSTALL_append = " hearthmonitor ppgreader"
 KERNEL_MODULE_AUTOLOAD += "ppgreader"
