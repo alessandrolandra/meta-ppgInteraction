@@ -62,4 +62,4 @@ to this:
 ```
 usleep(17000);
 ```
-due either to the higher time needed by the read operation or the emulator scarse timing precision.
+due to the emulator scarse timing precision.
