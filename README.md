@@ -40,5 +40,13 @@ KERNEL_MODULE_AUTOLOAD += "ppgreader"
 
 You can now build the new image. \
 If you are using a console only version, like the one that I used, the needed command is:
-`bitbake console-image`
-(You can do all these ... `bitbake core-image-minimal`).
+```
+bitbake console-image
+```
+You can also use this layer in other architectures, foer example another raspberry pi model or qemuarm etc. \
+All you need to do, in order to make these recepies compatible, is to change the COMPATIBLE_MACHINE in meta-ppgInteraction/recipes-ppg/cdd_recipe/ppgreader.bb. For example: \
+```
+#COMPATIBLE_MACHINE = "raspberrypi4"
+COMPATIBLE_MACHINE = "qemuarm"
+```
+Finally, you probably need to change the image to build, for example using `bitbake core-image-minimal`.
