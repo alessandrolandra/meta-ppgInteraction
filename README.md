@@ -1,10 +1,10 @@
 # meta-ppgInteraction
-yocto BSP layer developed for interacting with a ppg sensor and giving the user his hearth rate (CDD + APP recipes).
+Yocto BSP layer developed for interacting with a ppg sensor and giving the user his hearth rate (CDD + APP recipes).
 
 Target machine
 ============
 
-raspberry pi 4 \
+Raspberry pi 4 \
 (see compatibility note at the end (`*`))
 
 Content
@@ -25,7 +25,7 @@ Maintainer: https://github.com/alessandrolandra
 Adding the meta-ppgInteraction layer to your build
 =================================================
 
-The following instructions are supposed to be executed in an environment equipped with Poky, as reference distribution of the Yocto Project. \
+The following instructions are supposed to be executed in a Linux environment equipped with Poky, as reference distribution of the Yocto Project. \
 \
 First of all you need to clone this repository (or download and copy the whole meta-ppgInteraction directory) into **your poky folder**. \
 Then, after initializing your environment with
