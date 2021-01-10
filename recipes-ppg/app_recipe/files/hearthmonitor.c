@@ -89,11 +89,11 @@ void *computeFFT(){
 }
 
 int main(int argc, char* argv[]){
-	pthread_t pid;
-  	while(1) {
-		pthread_create(&pid, NULL, computeFFT, NULL);
-		pthread_join(pid, NULL);
-  	}
-	close(fd);
-	exit(EXIT_SUCCESS);
+  pthread_t pid;
+  while(1) {
+	pthread_create(&pid, NULL, computeFFT, NULL);
+	pthread_join(pid, NULL);
+  }
+  close(fd);
+  exit(EXIT_SUCCESS);
 }
