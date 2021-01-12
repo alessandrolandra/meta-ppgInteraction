@@ -9,7 +9,6 @@
 #include <asm/uaccess.h>
 
 #include "data.h"
-#define DEBUG
 
 static dev_t ppgreader_dev;
 struct cdev ppgreader_cdev;
@@ -20,9 +19,7 @@ ssize_t ppgreader_read(struct file *filp, char __user *buf, size_t count, loff_t
 {	
 	static int i=0;
 	sprintf(buf,"%d",ppg[i]);
-#ifdef DEGUB
 	printk(KERN_INFO "[ppgreader] read %s\n", buf);
-#endif	
 	i=(i+1)%2048;
 	return 1;
 }
