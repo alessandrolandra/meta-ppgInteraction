@@ -50,12 +50,12 @@ bitbake console-image
 \
 \
 (`*`) This layer may probably also work on other architectures (other raspberry pi model, qemu etc), but probably some timing differencies must be taken into account in the app_recipe. \
-I succeeded in making this work with the qemuarm machine; \
+I succeeded in making this work with the qemuarm machine architecture; \
 all you need to do, in order to make these recepies compatible, is to change the COMPATIBLE_MACHINE in **meta-ppgInteraction/recipes-ppg/cdd_recipe/ppgreader.bb**:
 ```
 COMPATIBLE_MACHINE = "qemuarm"
 ```
-The timing change that I was mentioning before, for my qemuarm machine, was to decrease the sleep interval in line 64 of the **meta-ppgInteraction/recipes-ppg/app_recipe/files/hearthmonitor.c** file from this:
+The timing change that I was mentioning before, for my qemuarm machine, was to decrease the sleep interval in line 64 of the [**meta-ppgInteraction/recipes-ppg/app_recipe/files/hearthmonitor.c**](recipes-ppg/app_recipe/files/hearthmonitor.c) file from this:
 ```
 usleep(20000);
 ```
