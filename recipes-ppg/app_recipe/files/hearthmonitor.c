@@ -50,7 +50,7 @@ void *computeFFT(){
   static complex v[N],scratch[N];
   static float abs[N];
   static int k,m,minIdx, maxIdx;
-  static char msg[6];//5 digits +'\0';
+  static char msg[6];//to store the value read from the driver (5 digits +'\0');
 
   if ((fd = open(dev_name, O_RDWR)) < 0){
   	fprintf(stderr, "ppgreader: unable to open %s: %s\n", dev_name, strerror(errno));
@@ -64,6 +64,9 @@ void *computeFFT(){
 	usleep(20000);
   }
   close(fd);
+/* I tryed computing the time elapsed between every usleep() end and its successive call, with the clock() function present in time.h, 
+to adjust the sleep time so that the full amount of microseconds between successive readings was 20000, but the final result was less accurate
+than just keeping the usleep(20000), probably due to the overhead introduced by the clock() function itself and the computation of the difference. */
 
 // FFT computation
   fft( v, N, scratch );
