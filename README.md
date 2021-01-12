@@ -1,5 +1,6 @@
 # meta-ppgInteraction
-Yocto BSP layer developed for interacting with a ppg sensor and giving the user his hearth rate (CDD + APP recipes).
+Yocto BSP layer developed for interacting with a ppg sensor and giving the user his hearth rate (CDD + APP recipes). \
+\
 The physical sensor has been simulated by sampling, instead of the real hardware device, the data present in the [data.h](recipes-ppg/cdd_recipe/files/data.h) file.
 
 Target machine
