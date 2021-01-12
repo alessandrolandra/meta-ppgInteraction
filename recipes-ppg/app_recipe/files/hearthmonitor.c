@@ -6,7 +6,6 @@
 #include <pthread.h>
 #include <math.h>
 #include <stdlib.h>
-#include <time.h>
 
 #define q	11		    /* for 2^11 points */
 #define N	(1<<q)		/* N-point FFT, iFFT */
@@ -51,26 +50,25 @@ void *computeFFT(){
   static complex v[N],scratch[N];
   static float abs[N];
   static int k,m,minIdx, maxIdx;
-  static char msg[6];//to store the value read from the driver (5 digits +'\0');
-  static clock_t t;
+  static char msg[6];//to store the value read from the driver (5 digits +'\0');  
 
   if ((fd = open(dev_name, O_RDWR)) < 0){
   	fprintf(stderr, "ppgreader: unable to open %s: %s\n", dev_name, strerror(errno));
   	exit(EXIT_FAILURE);
   }
 // Initialize the complex array for FFT computation
-  t=clock();
   for(k=0; k<N; k++) {
 	read(fd, msg, 1);
 	sscanf(msg,"%f",&(v[k].Re));
 	v[k].Im = 0;
-	usleep(20000-(clock()-t));
-	t=clock();
+	usleep(20000);
   }
   close(fd);
-/* Computing the time elapsed between every usleep() end and its successive call, with the clock() function present in time.h, 
-is not so useful on raspberry pi, in which more o less the same timing error is seen with or without this consideration. However, 
-important differencies can be seen in the qemuarm architecture, for example, so I suggest taking this into account. */
+/* I tryed to compute the time elapsed between every usleep() end and its successive call, with the clock() function present in time.h, 
+to adjust the sleep time so that the full amount of microseconds between successive readings was 20000, but this is not so useful on raspberry pi 4, 
+in which the timing error, computing the difference, increase even a little, in respect to the version above. This is probably due to the overhead introduced by the
+clock() function itself and the computation of the difference. In other architectures may be useful, but in qemuarm, for example, could cause multiple crashes,
+so I decided not to chose that way. */
 
 // FFT computation
   fft( v, N, scratch );
