@@ -16,6 +16,10 @@ app_recipe \
 cdd_recipe \
 (respectively to implement the application interface and the sensor device driver).
 
+Use
+============
+
+To launch the application, just type `hearthmonitor`
 
 Patches
 =======
@@ -63,6 +67,6 @@ usleep(20000);
 ```
 to this:
 ```
-usleep(17000);
+usleep(15000);
 ```
 due to the emulator scarse timing precision.
