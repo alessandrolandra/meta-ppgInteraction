@@ -68,7 +68,7 @@ void *computeFFT(){
 to adjust the sleep time so that the full amount of microseconds between successive readings was 20000, but this is not so useful on raspberry pi 4, 
 in which the timing error, computing the difference, increase even a little, in respect to the version above. This is probably due to the overhead introduced by the
 clock() function itself and the computation of the difference. In other architectures may be useful, but in qemuarm, for example, could cause multiple crashes,
-so I decided not to chose that way. */
+so I decided not to choose that way. */
 
 // FFT computation
   fft( v, N, scratch );
