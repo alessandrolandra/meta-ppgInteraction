@@ -19,7 +19,7 @@ cdd_recipe \
 Use
 ============
 
-To launch the application, just type:
+To launch the application, just run this command:
 ```
 hearthmonitor
 ```
@@ -45,7 +45,7 @@ bitbake-layers add-layer <your_poky_folder>/meta-ppgInteraction/
 ```
 (In alternative you can add a line in <your_build_path>/conf/bblayers.conf file, reporting `<your_poky_folder>/meta-ppgInteraction \` inside the BBLAYERS string).
 
-Finally, to add the newly create recipes to the image to be deployed, you have to edit <your_build_path>/conf/local.conf file by adding the following lines: 
+Finally, to add the newly created recipes to the image to be deployed, you have to edit <your_build_path>/conf/local.conf file by adding the following lines: 
 ```
 IMAGE_INSTALL_append = " hearthmonitor ppgreader"
 KERNEL_MODULE_AUTOLOAD += "ppgreader"
@@ -64,4 +64,4 @@ all you need to do, in order to make these recepies compatible, is to change the
 ```
 COMPATIBLE_MACHINE = "qemuarm"
 ```
-The timing change that I was mentioning before, for my qemuarm machine, was to decrease the sleep interval in line 64 of the [**meta-ppgInteraction/recipes-ppg/app_recipe/files/hearthmonitor.c**](recipes-ppg/app_recipe/files/hearthmonitor.c) file from this `usleep(20000)` to something like `usleep(16000)`, due to the emulator scarse timing precision.
+The timing change that I was mentioning before, for my qemuarm machine, was to decrease the sleep interval in line 64 of the [**meta-ppgInteraction/recipes-ppg/app_recipe/files/hearthmonitor.c**](recipes-ppg/app_recipe/files/hearthmonitor.c) file from this `usleep(20000)` to something like `usleep(16000)`, due to the limited resources and poor timing precision of my emulator.
