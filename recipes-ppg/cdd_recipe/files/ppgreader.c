@@ -19,7 +19,6 @@ ssize_t ppgreader_read(struct file *filp, char __user *buf, size_t count, loff_t
 {	
 	static int i=0;
 	sprintf(buf,"%d",ppg[i]);
-	printk(KERN_INFO "[ppgreader] read %s\n", buf);
 	i=(i+1)%2048;
 	return 1;
 }
