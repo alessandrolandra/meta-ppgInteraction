@@ -66,9 +66,10 @@ void *computeFFT(){
   close(fd);
 /* I tryed to compute the time elapsed between every usleep() end and its successive call, with the clock() function present in time.h, 
 to adjust the sleep time so that the full amount of microseconds between successive readings was 20000, but this is not so useful on raspberry pi 4, 
-in which the timing error, computing the difference, increase even a little, in respect to the version above. This is probably due to the overhead introduced by the
-clock() function itself and the computation of the difference. In other architectures may be useful, but in qemuarm, for example, could cause multiple crashes,
-so I decided not to choose that way. */
+in which the timing error, computing the difference, in some cases increased even a little, in respect to the version above. This is probably due to the overhead introduced by the
+clock() function itself and the computation of the difference. 
+On qemuarm, instead, taking into account this elapsed time is not enough to meet the required precision, so, in any case, you will have to decrease the sleep time.
+However, in other architectures it may be useful, this is the reason for this comment. */
 
 // FFT computation
   fft( v, N, scratch );
